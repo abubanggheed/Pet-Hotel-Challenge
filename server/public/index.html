@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <script src="vendors/angularjs.min.js"></script>
+    <script src="vendors/angular-route.js"></script>
+    <script src="scripts/client.js"></script>
+    <script src="scripts/controllers/dashboard.controller.js"></script>
+    <script src="scripts/controllers/owners.controller.js"></script>
+    <title>Pet Hotel</title>
 </head>
-<body>
-    
+<body ng-app="HotelApp">
+    <div>
+        <h1>Pet Hotel</h1>
+    </div>
+    <header>
+        <a ng-href="#!/dashboard">Dashboard</a>
+        <a ng-href="#!/owners">Manage Owners</a>
+    </header>
+    <ng-view></ng-view>
 </body>
 </html>
