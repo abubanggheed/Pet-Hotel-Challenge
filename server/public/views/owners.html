@@ -1,0 +1,19 @@
+<div>
+    <h2>Owners</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number of Pets</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="owner in vm.owners">
+                <td>{{owner.name}}</td>
+                <td>{{owner.count}}</td>
+                <td><button>Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
