@@ -1,0 +1,25 @@
+{
+  "name": "pet-hotel-challenge",
+  "version": "1.0.0",
+  "description": "A code challenge to practice my skills as a developing full stack engineer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abubanggheed/Pet-Hotel-Challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abubanggheed/Pet-Hotel-Challenge/issues"
+  },
+  "homepage": "https://github.com/abubanggheed/Pet-Hotel-Challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  }
+}
