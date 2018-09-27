@@ -27,5 +27,18 @@ app.controller('OwnersController', ['$http', function($http) {
         });
     }//end addOwner
 
+    vm.removeOwner = function(owner) {
+        $http({
+            method: 'DELETE',
+            url: '/owner',
+            params: {id: owner.id}
+        }).then( function(response) {
+            vm.getOwners();
+        }).catch( function(error) {
+            console.log('error:', error);
+            alert('failed to remove owner');
+        });
+    }//end removeOwner
+
     vm.getOwners();
 }]);//end ownersController

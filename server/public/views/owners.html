@@ -1,4 +1,9 @@
 <div>
+    <h2>Add Owner</h2>
+    <form ng-submit="vm.addOwner(vm.newName)">
+        <input type="text" placeholder="Owner name" ng-model="vm.newName" required>
+        <input type="submit">
+    </form>
     <h2>Owners</h2>
     <table>
         <thead>
@@ -12,7 +17,7 @@
             <tr ng-repeat="owner in vm.owners">
                 <td>{{owner.name}}</td>
                 <td>{{owner.count}}</td>
-                <td><button>Delete</button></td>
+                <td><button ng-click="vm.removeOwner(owner)">Delete</button></td>
             </tr>
         </tbody>
     </table>
