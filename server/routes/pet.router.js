@@ -35,4 +35,16 @@ router.delete('/', (req, res) => {
     });
 });
 
+router.put('/', (req, res) => {
+    let qry = req.query;
+    pool.query(`UPDATE "pet" SET "name" = $1, "breed" = $2, "color" = $3, "checked_in" = $4, "last_checkin" = $5, "owner_id" = $6
+    WHERE "id" = $7;`,[qry.name, qry.breed, qry.color, qry.checked_in, qry.last_checkin, qry.owner_id, qry.id])
+    .then((response) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error in put /pet:', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

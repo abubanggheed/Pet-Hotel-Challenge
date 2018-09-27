@@ -31,8 +31,8 @@
                 <td>{{pet.status}}</td>
                 <td>
                     <button ng-click="vm.removePet(pet.id)">Delete</button>
-                    <button ng-hide="pet.checked_in">Check In</button>
-                    <button ng-show="pet.checked_in">Check Out</button>
+                    <button ng-click="vm.checkPet(pet)" ng-hide="pet.checked_in">Check In</button>
+                    <button ng-click="vm.checkPet(pet)" ng-show="pet.checked_in">Check Out</button>
                 </td>
             </tr>
         </tbody>

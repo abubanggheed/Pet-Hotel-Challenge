@@ -73,6 +73,27 @@ app.controller('DashboardController', ['$http', function($http) {
         });
     }//end removePet
 
+    vm.resubmitPet = function(pet){
+        $http({
+            method: 'PUT',
+            url: '/pet',
+            params: pet
+        }).then( function(response){
+            vm.getPets();
+        }).catch(function(error){
+            console.log('error:', error);
+            alert('failed to reach database');
+        });
+    }//end resubmitPet
+
+    vm.checkPet = function(pet) {
+        pet.checked_in = !pet.checked_in;
+        if (pet.checked_in){
+            pet.last_checkin = moment().format('L');
+        }
+        vm.resubmitPet(pet);
+    }//end checkPet
+
     vm.getPets();
     vm.getOwners();
 
