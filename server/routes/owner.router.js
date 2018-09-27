@@ -34,4 +34,13 @@ router.delete('/', (req, res) => {
     });
 });
 
+router.put('/', (req, res) => {
+    pool.query(`UPDATE "owner" SET "name" = $1
+    WHERE "id" = $2`, [req.query.name, req.query.id]).then((results) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

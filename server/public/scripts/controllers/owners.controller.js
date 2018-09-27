@@ -44,5 +44,21 @@ app.controller('OwnersController', ['$http', function ($http) {
         }
     }//end removeOwner
 
+    vm.editOwner = function (owner) {
+        newName = prompt('Enter new name', owner.name);
+        if (newName !== '') {
+            $http({
+                method: 'PUT',
+                url: '/owner',
+                params: { name: owner.name, id: owner.id }
+            }).then(function (response) {
+                vm.getOwners();
+            }).catch(function (error) {
+                console.log('error:', error);
+                alert('edit failed');
+            });
+        }
+    }//end editOwner
+
     vm.getOwners();
 }]);//end ownersController
