@@ -24,10 +24,10 @@
         </thead>
         <tbody>
             <tr ng-repeat="pet in vm.pets">
-                <td>{{pet.owner_name}}</td>
-                <td>{{pet.name}}</td>
-                <td>{{pet.breed}}</td>
-                <td>{{pet.color}}</td>
+                <td ng-click="vm.editOwner(pet)">{{pet.owner_name}}</td>
+                <td ng-click="vm.editPet(pet, pet.name, 'name')">{{pet.name}}</td>
+                <td ng-click="vm.editPet(pet, pet.breed, 'breed')">{{pet.breed}}</td>
+                <td ng-click="vm.editPet(pet, pet.color, 'color')">{{pet.color}}</td>
                 <td>{{pet.status}}</td>
                 <td>
                     <button ng-click="vm.removePet(pet.id)">Delete</button>
