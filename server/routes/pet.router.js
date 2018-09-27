@@ -18,9 +18,19 @@ router.post('/', (req, res) => {
     pool.query(`INSERT INTO "pet" ("name", "breed", "color", "checked_in", "last_checkin", "owner_id")
     VALUES ($1, $2, $3, true, $4, $5)`, [bdy.name, bdy.breed, bdy.color, bdy.last_checkin, bdy.owner])
     .then((results) => {
-        res.send(201);
+        res.sendStatus(201);
     }).catch((error) => {
         console.log('error in post /pet:', error);
+        res.sendStatus(500);
+    });
+});
+
+router.delete('/', (req, res) => {
+    pool.query(`DELETE FROM "pet"
+    WHERE "id" = $1;`, [req.query.id]).then((results) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error in delete /pet:', error);
         res.sendStatus(500);
     });
 });

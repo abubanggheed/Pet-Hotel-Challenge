@@ -29,7 +29,11 @@
                 <td>{{pet.breed}}</td>
                 <td>{{pet.color}}</td>
                 <td>{{pet.status}}</td>
-                <td><button>Delete</button><button>Check In</button></td>
+                <td>
+                    <button ng-click="vm.removePet(pet.id)">Delete</button>
+                    <button ng-hide="pet.checked_in">Check In</button>
+                    <button ng-show="pet.checked_in">Check Out</button>
+                </td>
             </tr>
         </tbody>
     </table>

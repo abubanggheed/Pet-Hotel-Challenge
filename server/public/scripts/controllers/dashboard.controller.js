@@ -60,6 +60,19 @@ app.controller('DashboardController', ['$http', function($http) {
         });
     }//end addPet
 
+    vm.removePet = function(id) {
+        $http({
+            method: 'DELETE',
+            url: '/pet',
+            params: {id: id}
+        }).then(function(response){
+            vm.getPets();
+        }).catch(function(error){
+            console.log('error:', error);
+            alert('delete failed');
+        });
+    }//end removePet
+
     vm.getPets();
     vm.getOwners();
 
