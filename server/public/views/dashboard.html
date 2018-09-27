@@ -1,0 +1,35 @@
+<div>
+    <h2>Add Pet</h2>
+    <form>
+        <input type="text" placeholder="Pet Name">
+        <input type="text" placeholder="Pet Color">
+        <input type="text" placeholder="Pet Breed">
+        <select>
+            <option>Hi</option>
+        </select>
+        <input type="submit">
+    </form>
+    <h2>Pet List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Owner</th>
+                <th>Pet</th>
+                <th>Breed</th>
+                <th>Color</th>
+                <th>Checked In</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pet in vm.pets">
+                <td>{{pet.owner_name}}</td>
+                <td>{{pet.name}}</td>
+                <td>{{pet.breed}}</td>
+                <td>{{pet.color}}</td>
+                <td>{{pet.status}}</td>
+                <td><button>Delete</button><button>Check In</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
