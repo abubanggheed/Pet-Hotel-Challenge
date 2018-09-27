@@ -1,24 +1,28 @@
-<div>
-    <h2>Add Owner</h2>
-    <form ng-submit="vm.addOwner(vm.newName)">
-        <input type="text" placeholder="Owner name" ng-model="vm.newName" required>
-        <input type="submit">
-    </form>
-    <h2>Owners</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Number of Pets</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="owner in vm.owners">
-                <td ng-click="vm.editOwner(owner)">{{owner.name}}</td>
-                <td>{{owner.count}}</td>
-                <td><button ng-click="vm.removeOwner(owner)">Delete</button></td>
-            </tr>
-        </tbody>
-    </table>
+<div layout="row">
+    <div layout="column" flex="20">
+        <h2>Add Owner</h2>
+        <form ng-submit="vm.addOwner(vm.newName)">
+                <md-input-container><input type="text" placeholder="Owner name" ng-model="vm.newName" required></md-input-container>
+            <button>Submit</button>
+        </form>
+    </div>
+    <div layout="column" flex="80">
+        <h2>Owners</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Number of Pets</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="owner in vm.owners">
+                    <td ng-click="vm.editOwner(owner)">{{owner.name}}</td>
+                    <td>{{owner.count}}</td>
+                    <td><button ng-click="vm.removeOwner(owner)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

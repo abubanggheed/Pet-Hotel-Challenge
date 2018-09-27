@@ -21,6 +21,7 @@ app.controller('OwnersController', ['$http', function ($http) {
             data: { name: name }
         }).then(function (response) {
             vm.getOwners();
+            vm.newName = '';
         }).catch(function (error) {
             console.log('error:', error);
             alert('failed to reach database');
