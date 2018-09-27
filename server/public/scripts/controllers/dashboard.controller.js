@@ -40,6 +40,7 @@ app.controller('DashboardController', ['$http', function ($http) {
             } else {
                 pet.status = 'no';
             }
+            pet.editMode = false;
         }
     }//end refinePets
 
@@ -114,9 +115,11 @@ app.controller('DashboardController', ['$http', function ($http) {
         }
     }//end editPet
 
-    vm.editOwner = function (pet) {
-        console.log(pet);
+    vm.toggleEdit = function (pet) {
+        pet.editMode = !pet.editMode;
+        
     }//end editOwner
+
 
     vm.getPets();
     vm.getOwners();

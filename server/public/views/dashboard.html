@@ -24,7 +24,12 @@
         </thead>
         <tbody>
             <tr ng-repeat="pet in vm.pets">
-                <td ng-click="vm.editOwner(pet)">{{pet.owner_name}}</td>
+                <td ng-click="vm.toggleEdit(pet)" ng-hide="pet.editMode">{{pet.owner_name}}</td>
+                <td ng-show="pet.editMode">
+                    <select ng-model="pet.owner_id">
+                        <option ng-repeat="owner in vm.owners" ng-value="{{owner.id}}">{{owner.name}}</option>
+                    </select>
+                </td>
                 <td ng-click="vm.editPet(pet, pet.name, 'name')">{{pet.name}}</td>
                 <td ng-click="vm.editPet(pet, pet.breed, 'breed')">{{pet.breed}}</td>
                 <td ng-click="vm.editPet(pet, pet.color, 'color')">{{pet.color}}</td>
@@ -33,6 +38,8 @@
                     <button ng-click="vm.removePet(pet.id)">Delete</button>
                     <button ng-click="vm.checkPet(pet)" ng-hide="pet.checked_in">Check In</button>
                     <button ng-click="vm.checkPet(pet)" ng-show="pet.checked_in">Check Out</button>
+                    <button ng-click="vm.resubmitPet(pet)" ng-show="pet.editMode">Change Owner</button>
+                    <button ng-click="vm.toggleEdit(pet)" ng-show="pet.editMode">Cancle</button>
                 </td>
             </tr>
         </tbody>
