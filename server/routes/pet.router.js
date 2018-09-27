@@ -13,4 +13,16 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+    let bdy = req.body;
+    pool.query(`INSERT INTO "pet" ("name", "breed", "color", "checked_in", "last_checkin", "owner_id")
+    VALUES ($1, $2, $3, true, $4, $5)`, [bdy.name, bdy.breed, bdy.color, bdy.last_checkin, bdy.owner])
+    .then((results) => {
+        res.send(201);
+    }).catch((error) => {
+        console.log('error in post /pet:', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
