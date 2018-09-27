@@ -7,7 +7,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
     pool.query(`SELECT "owner"."id", "owner"."name", COUNT("pet"."id") FROM "owner"
     LEFT OUTER JOIN "pet" ON "owner"."id" = "pet"."owner_id"
-    GROUP BY "owner"."id", "owner"."name";`).then((results) => {
+    GROUP BY "owner"."id", "owner"."name"
+    ORDER BY "owner"."id";`).then((results) => {
         res.send(results.rows)
     }).catch( (error) => {
         console.log('error in get for /owner:', error);

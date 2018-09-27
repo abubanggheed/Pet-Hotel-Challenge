@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     pool.query(`SELECT "pet"."owner_id", "owner"."name" AS "owner_name", "pet"."name", "pet"."id", "breed", "color", "checked_in", "last_checkin" FROM "owner"
-    RIGHT OUTER JOIN "pet" ON "owner"."id" = "pet"."owner_id";`).then((results) => {
+    RIGHT OUTER JOIN "pet" ON "owner"."id" = "pet"."owner_id"
+    ORDER BY "pet"."id";`).then((results) => {
         res.send(results.rows);
     }).catch((error) => {
         res.sendStatus(500);

@@ -1,4 +1,4 @@
-const app = angular.module('HotelApp', ['ngRoute']);
+const app = angular.module('HotelApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
