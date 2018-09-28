@@ -1,3 +1,22 @@
-<div>
-    {{vm.visits}}
+<div class="table-column">
+    <table>
+        <thead>
+            <tr>
+                <th>Owner</th>
+                <th>Pet</th>
+                <th>Checked In</th>
+                <th>Checked Out</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="visit in vm.visits">
+                <td>{{visit.owner}}</td>
+                <td>{{visit.pet}}</td>
+                <td>{{visit.check_in}}</td>
+                <td>{{visit.checkout}}</td>
+                <td><md-button class="md-primary" ng-click="vm.deleteItem(visit)">Delete</md-button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -13,6 +13,19 @@ app.controller('HistoryController', ['$http', function($http) {
             alert('failed to connect with server');
         });
     }//end getHistory
+
+    vm.deleteItem = function(item) {
+        $http({
+            method: 'DELETE',
+            url: '/history',
+            params: {id: item.id}
+        }).then( function (response){
+            vm.getHistory();
+        }).catch( function(error) {
+            console.log('error:', error);
+            alert('failed to delete item');
+        });
+    }//end deleteItem
     
     vm.getHistory();
 }]);
