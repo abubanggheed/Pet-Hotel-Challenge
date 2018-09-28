@@ -13,8 +13,8 @@
             <tr ng-repeat="visit in vm.visits">
                 <td>{{visit.owner}}</td>
                 <td>{{visit.pet}}</td>
-                <td>{{visit.check_in}}</td>
-                <td>{{visit.checkout}}</td>
+                <td>{{visit.in}}</td>
+                <td>{{visit.out}}</td>
                 <td><md-button class="md-primary" ng-click="vm.deleteItem(visit)">Delete</md-button></td>
             </tr>
         </tbody>
