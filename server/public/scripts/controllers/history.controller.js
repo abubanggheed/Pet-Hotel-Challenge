@@ -2,7 +2,7 @@ app.controller('HistoryController', ['$http', function($http) {
     let vm = this;
     vm.visits = [];
 
-    getHistory = function() {
+    vm.getHistory = function() {
         $http({
             method: 'GET',
             url: '/history'
@@ -14,4 +14,5 @@ app.controller('HistoryController', ['$http', function($http) {
         });
     }//end getHistory
     
+    vm.getHistory();
 }]);

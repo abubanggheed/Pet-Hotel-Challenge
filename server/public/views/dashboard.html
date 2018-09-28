@@ -34,7 +34,7 @@
                 <tr mat-row ng-repeat="pet in vm.pets">
                     <td ng-click="vm.toggleEdit(pet)" ng-hide="pet.editMode" class="selectable">{{pet.owner_name}}</td>
                     <td ng-show="pet.editMode">
-                        <md-select ng-model="pet.owner_id">
+                        <md-select ng-model="pet.owner_id" aria-label="owner">
                             <md-option ng-repeat="owner in vm.owners" ng-value="{{owner.id}}">{{owner.name}}</md-option>
                         </md-select>
                         <md-button class="md-primary" ng-click="vm.toggleEdit(pet)" ng-show="pet.editMode">Cancle</md-button>

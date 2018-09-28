@@ -13,11 +13,15 @@ CREATE TABLE "pet" (
 	"owner_id" INT REFERENCES "owner"
 );
 
+CREATE TABLE "history" (
+"id" SERIAL PRIMARY KEY,
+"pet_id" INT REFERENCES "pet",
+"check_in" DATE,
+"checkout" DATE
+);
+
 INSERT INTO "owner" ("name")
 VALUES ('Chris'), ('Ally'), ('Dane');
 
 INSERT INTO "pet" ("name", "breed", "color", "checked_in", "owner_id")
 VALUES ('Charlie', 'Shih-tzu', 'Black', FALSE, 1), ('Thorin', 'Rabbit', 'White', FALSE, 1), ('Gatsby', 'Cat', 'White', FALSE, 2), ('Juniper', 'Cat', 'Tabby', FALSE, 3);
-
-UPDATE "pet" SET "checked_in" = TRUE, "last_checkin" = '2018-05-05'
-WHERE "id" = 3;
