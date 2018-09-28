@@ -9,6 +9,9 @@ app.config(['$routeProvider', function($routeProvider) {
     }).when('/owners', {
         templateUrl: 'views/owners.html',
         controller: 'OwnersController as vm'
+    }).when('/history', {
+        templateUrl: 'views/history.html',
+        controller: 'HistoryController as vm'
     }).otherwise({
         templateUrl: 'views/oops.html'
     });

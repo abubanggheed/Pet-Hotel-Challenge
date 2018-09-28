@@ -12,7 +12,9 @@
                     </md-select>
                 </md-input-container>
             </div>
-            <md-input-container><md-button ng-click="vm.addPet()" class="md-raised md-accent md-hue-1">Submit</md-button></md-input-container>
+            <md-input-container>
+                <md-button ng-click="vm.addPet()" class="md-raised md-accent md-hue-1">Submit</md-button>
+            </md-input-container>
         </form>
     </div>
     <div layout="column" flex="80" class="table-column">
@@ -30,22 +32,22 @@
             </thead>
             <tbody>
                 <tr mat-row ng-repeat="pet in vm.pets">
-                    <td ng-click="vm.toggleEdit(pet)" ng-hide="pet.editMode">{{pet.owner_name}}</td>
+                    <td ng-click="vm.toggleEdit(pet)" ng-hide="pet.editMode" class="selectable">{{pet.owner_name}}</td>
                     <td ng-show="pet.editMode">
                         <md-select ng-model="pet.owner_id">
                             <md-option ng-repeat="owner in vm.owners" ng-value="{{owner.id}}">{{owner.name}}</md-option>
                         </md-select>
+                        <md-button class="md-primary" ng-click="vm.toggleEdit(pet)" ng-show="pet.editMode">Cancle</md-button>
+                        <md-button class="md-primary" ng-click="vm.resubmitPet(pet)" ng-show="pet.editMode">Change Owner</md-button>
                     </td>
-                    <td ng-click="vm.editPet(pet, pet.name, 'name')">{{pet.name}}</td>
-                    <td ng-click="vm.editPet(pet, pet.breed, 'breed')">{{pet.breed}}</td>
-                    <td ng-click="vm.editPet(pet, pet.color, 'color')">{{pet.color}}</td>
+                    <td ng-click="vm.editPet(pet, pet.name, 'name')" class="selectable">{{pet.name}}</td>
+                    <td ng-click="vm.editPet(pet, pet.breed, 'breed')" class="selectable">{{pet.breed}}</td>
+                    <td ng-click="vm.editPet(pet, pet.color, 'color')" class="selectable">{{pet.color}}</td>
                     <td>{{pet.status}}</td>
                     <td>
-                        <md-button class="md-primary" ng-click="vm.removePet(pet.id)" ng-hide="pet.editMode">Delete</md-button class="md-primary">
-                        <md-button class="md-primary" ng-click="vm.checkPet(pet)" ng-hide="pet.checked_in">Check In</md-button class="md-primary">
-                        <md-button class="md-primary" ng-click="vm.checkPet(pet)" ng-show="pet.checked_in">Check Out</md-button class="md-primary">
-                        <md-button class="md-primary" ng-click="vm.toggleEdit(pet)" ng-show="pet.editMode">Cancle</md-button class="md-primary">
-                        <md-button class="md-primary" ng-click="vm.resubmitPet(pet)" ng-show="pet.editMode">Change Owner</md-button class="md-primary">
+                        <md-button class="md-primary" ng-click="vm.removePet(pet.id)">Delete</md-button>
+                        <md-button class="md-primary" ng-click="vm.checkPet(pet)" ng-hide="pet.checked_in">Check In</md-button>
+                        <md-button class="md-primary" ng-click="vm.checkPet(pet)" ng-show="pet.checked_in">Check Out</md-button>
                     </td>
                 </tr mat-row>
             </tbody>

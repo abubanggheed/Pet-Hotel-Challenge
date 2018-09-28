@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="owner in vm.owners">
-                    <td ng-click="vm.editOwner(owner)">{{owner.name}}</td>
+                    <td ng-click="vm.editOwner(owner)" class="selectable">{{owner.name}}</td>
                     <td>{{owner.count}}</td>
                     <td><md-button class="md-primary" ng-click="vm.removeOwner(owner)">Delete</md-button class="md-fab"></td>
                 </tr>
