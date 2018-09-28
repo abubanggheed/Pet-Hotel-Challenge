@@ -20,9 +20,3 @@ CREATE TABLE "history" (
 "check_in" DATE,
 "checkout" DATE
 );
-
-INSERT INTO "owner" ("name")
-VALUES ('Chris'), ('Ally'), ('Dane');
-
-INSERT INTO "pet" ("name", "breed", "color", "checked_in", "owner_id")
-VALUES ('Charlie', 'Shih-tzu', 'Black', FALSE, 1), ('Thorin', 'Rabbit', 'White', FALSE, 1), ('Gatsby', 'Cat', 'White', FALSE, 2), ('Juniper', 'Cat', 'Tabby', FALSE, 3);

@@ -48,7 +48,6 @@ app.controller('DashboardController', ['$http', function ($http) {
             url: '/pet',
             data: vm.newPet
         }).then(function (response) {
-            vm.checkIn(response.data);
             vm.getPets();
         }).catch(function (error) {
             console.log('error:', error);

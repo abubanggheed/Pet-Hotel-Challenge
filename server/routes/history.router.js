@@ -19,7 +19,6 @@ router.post('/', (req, res) => {
     pool.query(`SELECT "name" FROM "owner"
     WHERE "id" = $1`, [bdy.owner]).then((results) => {
         let own = results.rows[0].name;
-        console.log(own, results);
         pool.query(`INSERT INTO "history" ("owner", "pet", "check_in", "checkout")
         VALUES ($1, $2, $3, $4)`, [own, bdy.pet, bdy.check_in, bdy.checkout]).then((results) => {
             res.sendStatus(201);
