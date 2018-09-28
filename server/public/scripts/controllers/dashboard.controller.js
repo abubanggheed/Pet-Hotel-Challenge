@@ -22,9 +22,6 @@ app.controller('DashboardController', ['$http', function ($http) {
             url: '/owner'
         }).then(function (response) {
             vm.owners = response.data;
-            if (vm.owners.length > 0) {
-                vm.newPet = { owner: vm.owners[0].id };
-            }
         }).catch(function (error) {
             console.log('error:', error);
             alert('failed to retrieve owner data');
@@ -52,9 +49,6 @@ app.controller('DashboardController', ['$http', function ($http) {
             data: vm.newPet
         }).then(function (response) {
             vm.getPets();
-            if (vm.owners.length > 0) {
-                vm.newPet = { owner: vm.owners[0].id };
-            }
         }).catch(function (error) {
             console.log('error:', error);
             alert('failed to reach database');

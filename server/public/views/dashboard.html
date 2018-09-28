@@ -1,34 +1,35 @@
 <div layout="row">
     <div layout="column" flex="20">
-        <h2>Add Pet</h2>
+        <h2 class="md-display-1">Add Pet</h2>
         <form ng-submit="vm.addPet()">
             <md-input-container><input type="text" placeholder="Pet Name" ng-model="vm.newPet.name" required></md-input-container>
             <md-input-container><input type="text" placeholder="Pet Color" ng-model="vm.newPet.color"></md-input-container>
             <md-input-container><input type="text" placeholder="Pet Breed" ng-model="vm.newPet.breed"></md-input-container>
             <div layout="row">
-                <label>Owner: </label>
-                <md-input-container><select ng-model="vm.newPet.owner"></md-input-container>
-                    <option ng-repeat="owner in vm.owners" ng-value="{{owner.id}}">{{owner.name}}</option>
-                </select>
+                <md-input-container>
+                    <md-select ng-model="vm.newPet.owner" placeholder="Select and Owner" required>
+                        <md-option ng-repeat="owner in vm.owners" ng-value="{{owner.id}}">{{owner.name}}</md-option>
+                    </md-select>
+                </md-input-container>
             </div>
-            <md-input-container><button>Submit</button></md-input-container>
+            <md-input-container><md-button ng-click="vm.addPet()" class="md-raised md-accent md-hue-1">Submit</md-button></md-input-container>
         </form>
     </div>
     <div layout="column" flex="80">
-        <h2>Pet List</h2>
-        <table>
+        <h2 class="md-display-1">Pet List</h2>
+        <table mat-table>
             <thead>
-                <tr>
+                <tr mat-header-row>
                     <th>Owner</th>
                     <th>Pet</th>
                     <th>Breed</th>
                     <th>Color</th>
                     <th>Checked In</th>
                     <th>Actions</th>
-                </tr>
+                </tr mat-header-row>
             </thead>
             <tbody>
-                <tr ng-repeat="pet in vm.pets">
+                <tr mat-row ng-repeat="pet in vm.pets">
                     <td ng-click="vm.toggleEdit(pet)" ng-hide="pet.editMode">{{pet.owner_name}}</td>
                     <td ng-show="pet.editMode">
                         <select ng-model="pet.owner_id">
@@ -46,8 +47,8 @@
                         <button ng-click="vm.toggleEdit(pet)" ng-show="pet.editMode">Cancle</button>
                         <button ng-click="vm.resubmitPet(pet)" ng-show="pet.editMode">Change Owner</button>
                     </td>
-                </tr>
+                </tr mat-row>
             </tbody>
-        </table>
+        </table mat-table>
     </div>
 </div>

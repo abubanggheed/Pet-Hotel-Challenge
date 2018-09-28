@@ -1,13 +1,15 @@
 <div layout="row">
     <div layout="column" flex="20">
-        <h2>Add Owner</h2>
+        <h2 class="md-display-1">Add Owner</h2>
         <form ng-submit="vm.addOwner(vm.newName)">
                 <md-input-container><input type="text" placeholder="Owner name" ng-model="vm.newName" required></md-input-container>
-            <button>Submit</button>
+            <md-input-container>
+                <md-button ng-click="vm.addOwner(vm.newName)" class="md-raised md-accent md-hue-1">Submit</md-button>
+            </md-input-container>
         </form>
     </div>
     <div layout="column" flex="80">
-        <h2>Owners</h2>
+        <h2 class="md-display-1">Owners</h2>
         <table>
             <thead>
                 <tr>
