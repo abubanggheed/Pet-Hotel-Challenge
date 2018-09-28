@@ -86,7 +86,6 @@ app.controller('DashboardController', ['$http', function ($http) {
         pet.checked_in = !pet.checked_in;
         if (pet.checked_in) {
             pet.last_checkin = moment().format('L');
-            vm.checkIn(pet);
         } else {
             vm.checkOut(pet);
         }
@@ -113,25 +112,15 @@ app.controller('DashboardController', ['$http', function ($http) {
         }
     }//end editPet
 
-    vm.checkIn = function(pet) {
+    vm.checkOut = function(pet) {
         $http({
             method: 'POST',
             url: '/history',
-            data: pet
-        }).then( function(response) {
-        }).catch( function(error) {
-            console.log('error:', error);
-            alert('error in checkin');
-        });
-    }//end checkIn
-
-    vm.checkOut = function(pet) {
-        $http({
-            method: 'PUT',
-            url: '/history',
-            params: {
-                id: pet.id,
-                date: moment().format('L')
+            data: {
+                pet: pet.name,
+                owner: pet.owner_id,
+                check_in: pet.last_checkin,
+                checkout: moment().format('L')
             }
         }).then( function(response) {
             vm.resubmitPet(pet);

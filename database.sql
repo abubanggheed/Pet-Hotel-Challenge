@@ -15,7 +15,8 @@ CREATE TABLE "pet" (
 
 CREATE TABLE "history" (
 "id" SERIAL PRIMARY KEY,
-"pet_id" INT REFERENCES "pet",
+"owner" VARCHAR (50) NOT NULL,
+"pet" VARCHAR (50) NOT NULL,
 "check_in" DATE,
 "checkout" DATE
 );

@@ -5,9 +5,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    pool.query(`SELECT "history"."id", "owner"."name" AS "owner", "pet"."name" AS "pet", "check_in", "checkout" FROM "history"
-    JOIN "pet" ON "history"."pet_id" = "pet"."id"
-    JOIN "owner" ON "pet"."owner_id" = "owner"."id"
+    pool.query(`SELECT * FROM "history"
     ORDER BY "id" DESC;`).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
@@ -18,13 +16,21 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     let bdy = req.body;
-    pool.query(`INSERT INTO "history" ("pet_id", "check_in")
-VALUES ($1, $2);`, [bdy.id, bdy.last_checkin]).then((results) => {
+    pool.query(`SELECT "name" FROM "owner"
+    WHERE "id" = $1`, [bdy.owner]).then((results) => {
+        let own = results.rows[0].name;
+        console.log(own, results);
+        pool.query(`INSERT INTO "history" ("owner", "pet", "check_in", "checkout")
+        VALUES ($1, $2, $3, $4)`, [own, bdy.pet, bdy.check_in, bdy.checkout]).then((results) => {
             res.sendStatus(201);
         }).catch((error) => {
             console.log('error in post /history:', error);
             res.sendStatus(500);
         });
+    }).catch((error) => {
+        console.log('error in post /history:', error);
+        res.sendStatus(500);
+    });
 });
 
 router.put('/', (req, res) => {
