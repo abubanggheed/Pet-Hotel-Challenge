@@ -1,0 +1,34 @@
+.top {
+    color: white;
+    background-color: darkcyan;
+    text-align: center;
+    padding: .5em;
+}
+
+.input-column{
+    background-color: lavenderblush;
+    margin-left: 0.3em;
+}
+
+.table-column{
+    background-color: aliceblue;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin: 0.4em;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+th {
+    color: white;
+    background-color: royalblue;
+    padding: 1em;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
