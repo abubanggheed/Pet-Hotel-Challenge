@@ -1,11 +1,12 @@
 app.controller('HistoryController', ['$http', function ($http) {
     let vm = this;
     vm.visits = [];
+    vm.parameter = '';
 
     vm.getHistory = function () {
         $http({
             method: 'GET',
-            url: '/history'
+            url: '/history' + vm.parameter
         }).then(function (response) {
             vm.visits = response.data;
             vm.refineTimes(vm.visits);
@@ -14,6 +15,16 @@ app.controller('HistoryController', ['$http', function ($http) {
             alert('failed to connect with server');
         });
     }//end getHistory
+
+    vm.sortHistory = function (field) {
+        if(field === '') {
+            vm.parameter = '';
+        } else{
+            vm.parameter = '/' + field;
+        }
+        vm.getHistory();
+    }//end sortHistory
+
 
     vm.deleteItem = function (item) {
         if (item.out === 'ongoing') {

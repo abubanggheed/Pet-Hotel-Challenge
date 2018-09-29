@@ -14,6 +14,46 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/owner', (req, res) => {
+    pool.query(`SELECT * FROM "history"
+    ORDER BY "owner";`).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('error in get /history:', error);
+            res.sendStatus(500);
+        });
+});
+
+router.get('/pet', (req, res) => {
+    pool.query(`SELECT * FROM "history"
+    ORDER BY "pet";`).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('error in get /history:', error);
+            res.sendStatus(500);
+        });
+});
+
+router.get('/checkin', (req, res) => {
+    pool.query(`SELECT * FROM "history"
+    ORDER BY "check_in" DESC;`).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('error in get /history:', error);
+            res.sendStatus(500);
+        });
+});
+
+router.get('/checkout', (req, res) => {
+    pool.query(`SELECT * FROM "history"
+    ORDER BY "checkout" DESC;`).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('error in get /history:', error);
+            res.sendStatus(500);
+        });
+});
+
 router.post('/', (req, res) => {
     let bdy = req.body;
     pool.query(`SELECT "name" FROM "owner"

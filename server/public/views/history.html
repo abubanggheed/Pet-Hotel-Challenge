@@ -3,11 +3,11 @@
     <table>
         <thead>
             <tr>
-                <th>Owner</th>
-                <th>Pet</th>
-                <th>Checked In</th>
-                <th>Checked Out</th>
-                <th>Actions</th>
+                <th class="selectable" ng-click="vm.sortHistory('owner')">Owner</th>
+                <th class="selectable" ng-click="vm.sortHistory('pet')">Pet</th>
+                <th class="selectable" ng-click="vm.sortHistory('checkin')">Checked In</th>
+                <th class="selectable" ng-click="vm.sortHistory('checkout')">Checked Out</th>
+                <th class="selectable" ng-click="vm.sortHistory('')">Actions</th>
             </tr>
         </thead>
         <tbody>
