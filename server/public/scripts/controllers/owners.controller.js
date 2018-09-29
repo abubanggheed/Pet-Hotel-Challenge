@@ -1,11 +1,12 @@
 app.controller('OwnersController', ['$http', '$mdDialog', function ($http, $mdDialog) {
     let vm = this;
     vm.owners = [];
+    vm.parameter = '';
 
     vm.getOwners = function () {
         $http({
             method: 'GET',
-            url: '/owner'
+            url: '/owner' + vm.parameter
         }).then(function (response) {
             vm.owners = response.data;
         }).catch(function (error) {
@@ -13,6 +14,15 @@ app.controller('OwnersController', ['$http', '$mdDialog', function ($http, $mdDi
             alert('failed to retrieve owner data');
         });
     }//end getOwners
+
+    vm.sortOwners = function (field) {
+        if(field === '') {
+            vm.parameter = '';
+        } else{
+            vm.parameter = '/' + field;
+        }
+        vm.getOwners();
+    }//end sortOwners
 
     vm.addOwner = function (name) {
         $http({

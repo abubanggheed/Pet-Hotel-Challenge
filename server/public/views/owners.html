@@ -13,9 +13,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Number of Pets</th>
-                    <th>Actions</th>
+                    <th class="selectable" ng-click="vm.sortOwners('name')">Name</th>
+                    <th class="selectable" ng-click="vm.sortOwners('number')">Number of Pets</th>
+                    <th class="selectable" ng-click="vm.sortOwners('')">Actions</th>
                 </tr>
             </thead>
             <tbody>

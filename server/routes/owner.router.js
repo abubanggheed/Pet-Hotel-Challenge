@@ -16,6 +16,30 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/name', (req, res) => {
+    pool.query(`SELECT "owner"."id", "owner"."name", COUNT("pet"."id") FROM "owner"
+    LEFT OUTER JOIN "pet" ON "owner"."id" = "pet"."owner_id"
+    GROUP BY "owner"."id", "owner"."name"
+    ORDER BY "owner"."name";`).then((results) => {
+        res.send(results.rows)
+    }).catch( (error) => {
+        console.log('error in get for /owner:', error);
+        res.sendStatus(500);
+    });
+});
+
+router.get('/number', (req, res) => {
+    pool.query(`SELECT "owner"."id", "owner"."name", COUNT("pet"."id") FROM "owner"
+    LEFT OUTER JOIN "pet" ON "owner"."id" = "pet"."owner_id"
+    GROUP BY "owner"."id", "owner"."name"
+    ORDER BY "owner"."count" DESC;`).then((results) => {
+        res.send(results.rows)
+    }).catch( (error) => {
+        console.log('error in get for /owner:', error);
+        res.sendStatus(500);
+    });
+})
+
 router.post('/', (req, res) => {
     pool.query(`INSERT INTO "owner" ("name")
     VALUES ($1)`, [req.body.name]).then((results) => {
