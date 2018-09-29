@@ -1,4 +1,4 @@
-app.controller('DashboardController', ['$http', function ($http) {
+app.controller('DashboardController', ['$http', '$mdDialog', function ($http, $mdDialog) {
     let vm = this;
     vm.pets = [];
     vm.owners = [];
@@ -92,23 +92,27 @@ app.controller('DashboardController', ['$http', function ($http) {
     }//end checkPet
 
     vm.editPet = function (pet, value, property) {
-        let newValue = prompt('Enter new value', value);
-        if (newValue) {
+        $mdDialog.show($mdDialog.prompt({
+            title: 'enter new value',
+            initialValue: value,
+            ok: 'submit',
+            cancel: 'never mind'
+        })).then(function(result) {
             switch (property) {
                 case 'name':
-                    pet.name = newValue;
+                    pet.name = result;
                     break;
                 case 'breed':
-                    pet.breed = newValue;
+                    pet.breed = result;
                     break;
                 case 'color':
-                    pet.color = newValue;
+                    pet.color = result;
                     break;
                 default:
                     break;
             }//end switch
             vm.resubmitPet(pet);
-        }
+        });
     }//end editPet
 
     vm.checkOut = function(pet) {

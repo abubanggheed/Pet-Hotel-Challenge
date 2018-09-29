@@ -1,4 +1,4 @@
-app.controller('OwnersController', ['$http', function ($http) {
+app.controller('OwnersController', ['$http', '$mdDialog', function ($http, $mdDialog) {
     let vm = this;
     vm.owners = [];
 
@@ -30,7 +30,11 @@ app.controller('OwnersController', ['$http', function ($http) {
 
     vm.removeOwner = function (owner) {
         if (owner.count > 0) {
-            alert('you cannot delete an owner with registered pets');
+            $mdDialog.show($mdDialog.alert({
+                title: 'Notice',
+                textContent: 'you cannot delete an owner with registed pets',
+                ok: 'grumble'
+            }));
         } else {
             $http({
                 method: 'DELETE',
@@ -46,8 +50,13 @@ app.controller('OwnersController', ['$http', function ($http) {
     }//end removeOwner
 
     vm.editOwner = function (owner) {
-        let newName = prompt('Enter new name', owner.name);
-        if (newName) {
+        $mdDialog.show($mdDialog.prompt({
+            title: 'Enter new name',
+            initialValue: owner.name,
+            ok: 'submit',
+            cancel: 'never mind'
+        })).then(function (result) {
+            owner.name = result;
             $http({
                 method: 'PUT',
                 url: '/owner',
@@ -58,7 +67,7 @@ app.controller('OwnersController', ['$http', function ($http) {
                 console.log('error:', error);
                 alert('edit failed');
             });
-        }
+        });
     }//end editOwner
 
     vm.getOwners();
