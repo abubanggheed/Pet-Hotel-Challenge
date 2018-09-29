@@ -22,12 +22,12 @@
         <table mat-table>
             <thead>
                 <tr mat-header-row>
-                    <th>Owner</th>
-                    <th>Pet</th>
-                    <th>Breed</th>
-                    <th>Color</th>
-                    <th>Checked In</th>
-                    <th>Actions</th>
+                    <th class="selectable" ng-click="vm.sortPets('owner')">Owner</th>
+                    <th class="selectable" ng-click="vm.sortPets('name')">Pet</th>
+                    <th class="selectable" ng-click="vm.sortPets('breed')">Breed</th>
+                    <th class="selectable" ng-click="vm.sortPets('color')">Color</th>
+                    <th class="selectable" ng-click="vm.sortPets('checkedin')">Checked In</th>
+                    <th class="selectable" ng-click="vm.sortPets('')">Actions</th>
                 </tr mat-header-row>
             </thead>
             <tbody>

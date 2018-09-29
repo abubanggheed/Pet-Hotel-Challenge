@@ -2,11 +2,12 @@ app.controller('DashboardController', ['$http', '$mdDialog', function ($http, $m
     let vm = this;
     vm.pets = [];
     vm.owners = [];
+    vm.parameter = '';
 
     vm.getPets = function () {
         $http({
             method: 'GET',
-            url: '/pet'
+            url: '/pet' + vm.parameter
         }).then(function (response) {
             vm.pets = response.data;
             vm.refinePets();
@@ -15,6 +16,15 @@ app.controller('DashboardController', ['$http', '$mdDialog', function ($http, $m
             alert('failed to connect with server');
         });
     }//emd getPets
+
+    vm.sortPets = function (field) {
+        if(field === '') {
+            vm.parameter = '';
+        } else{
+            vm.parameter = '/' + field;
+        }
+        vm.getPets();
+    }//end sortPets
 
     vm.getOwners = function () {
         $http({
