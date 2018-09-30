@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="visit in vm.visits filter | vm.filter">
+            <tr ng-repeat="visit in vm.visits | filter : vm.filter">
                 <td>{{visit.owner}}</td>
                 <td>{{visit.pet}}</td>
                 <td>{{visit.in}}</td>
