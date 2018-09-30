@@ -59,6 +59,7 @@ app.controller('DashboardController', ['$http', '$mdDialog', function ($http, $m
             data: vm.newPet
         }).then(function (response) {
             vm.getPets();
+            vm.newPet = {};
         }).catch(function (error) {
             console.log('error:', error);
             alert('failed to reach database');

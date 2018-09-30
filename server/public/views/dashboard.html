@@ -37,7 +37,7 @@
                         <md-select ng-model="pet.owner_id" aria-label="owner">
                             <md-option ng-repeat="owner in vm.owners" ng-value="{{owner.id}}">{{owner.name}}</md-option>
                         </md-select>
-                        <md-button class="md-primary" ng-click="vm.toggleEdit(pet)" ng-show="pet.editMode">Cancle</md-button>
+                        <md-button class="md-primary" ng-click="vm.toggleEdit(pet)" ng-show="pet.editMode">Cancel</md-button>
                         <md-button class="md-primary" ng-click="vm.resubmitPet(pet)" ng-show="pet.editMode">Change Owner</md-button>
                     </td>
                     <td ng-click="vm.editPet(pet, pet.name, 'name')" class="selectable">{{pet.name}}</td>
