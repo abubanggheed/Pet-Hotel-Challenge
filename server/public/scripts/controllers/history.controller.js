@@ -2,6 +2,7 @@ app.controller('HistoryController', ['$http', function ($http) {
     let vm = this;
     vm.visits = [];
     vm.parameter = '';
+    vm.filter = '';
 
     vm.getHistory = function () {
         $http({

@@ -3,6 +3,7 @@ app.controller('DashboardController', ['$http', '$mdDialog', function ($http, $m
     vm.pets = [];
     vm.owners = [];
     vm.parameter = '';
+    vm.filter = '';
 
     vm.getPets = function () {
         $http({

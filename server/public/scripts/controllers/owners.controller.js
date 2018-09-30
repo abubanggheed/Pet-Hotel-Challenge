@@ -2,6 +2,7 @@ app.controller('OwnersController', ['$http', '$mdDialog', function ($http, $mdDi
     let vm = this;
     vm.owners = [];
     vm.parameter = '';
+    vm.filter = '';
 
     vm.getOwners = function () {
         $http({

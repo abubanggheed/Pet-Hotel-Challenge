@@ -1,5 +1,8 @@
 <div class="table-column" layout="column">
     <h2 class="md-display-1">History</h2>
+    <md-input-container>
+        <input ng-model="vm.filter" placeholder="filter">
+    </md-input-container>
     <table>
         <thead>
             <tr>
@@ -11,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="visit in vm.visits">
+            <tr ng-repeat="visit in vm.visits filter | vm.filter">
                 <td>{{visit.owner}}</td>
                 <td>{{visit.pet}}</td>
                 <td>{{visit.in}}</td>

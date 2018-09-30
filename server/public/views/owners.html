@@ -10,6 +10,9 @@
     </div>
     <div layout="column" flex="80" class="table-column">
         <h2 class="md-display-1">Owners</h2>
+        <md-input-container>
+            <input ng-model="vm.filter" placeholder="filter">
+        </md-input-container>
         <table>
             <thead>
                 <tr>
@@ -19,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="owner in vm.owners">
+                <tr ng-repeat="owner in vm.owners | filter: vm.filter">
                     <td ng-click="vm.editOwner(owner)" class="selectable">{{owner.name}}</td>
                     <td>{{owner.count}}</td>
                     <td><md-button class="md-primary" ng-click="vm.removeOwner(owner)">Delete</md-button></td>
