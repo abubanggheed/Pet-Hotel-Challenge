@@ -3,7 +3,7 @@ This is a project designed to practise my skills as a developer.
 
 ### Set-Up
 - run npm install to get the used modules
-- create a database called "pet_hotel"
+- create a postgressql database called "pet_hotel"
 - in "pet_hotel" run the lines of code in database.sql to create the neccesary tables
 - start the server using the start script: npm start
 ### Features
@@ -16,3 +16,4 @@ This is a project designed to practise my skills as a developer.
 - Adding images to the dashboard
 - Adding images and other additional styling to the site
 - Adding a notice on the dashboard if there are no registered owners
+- reducing the dashboard get routes down to 2, / and /desc, and use search string parameters to determine what for what column the table is being ordered
