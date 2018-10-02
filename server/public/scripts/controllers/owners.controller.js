@@ -71,7 +71,7 @@ app.controller('OwnersController', ['$http', '$mdDialog', function ($http, $mdDi
             $http({
                 method: 'PUT',
                 url: '/owner',
-                params: { name: newName, id: owner.id }
+                params: owner,
             }).then(function (response) {
                 vm.getOwners();
             }).catch(function (error) {
